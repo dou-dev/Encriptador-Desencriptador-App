@@ -2,9 +2,10 @@ const input = document.querySelector('.input');
 const btnEncript = document.querySelector('#button-encrypt');
 const btnDecrypt = document.querySelector('#button-decrypt');
 const aside = document.querySelector('.aside');
-// const textAside = document.querySelector('.text-aside');
 const asideImage = document.querySelector('.no-text');
 const containerForm = document.querySelector('.form');
+
+
 
 let message;
 // encryptText
@@ -76,7 +77,7 @@ const mostrarMessage= (message)=>{
     const html = `
         <div class="text-aside">
                 <p class="message">${message}</p>
-            <button id="btn-copiar" class="btn btn-light">copiar</button>
+            <button id="btnCopy" class="btn btn-light">copiar</button>
         </div>
         `;
     const div = document.createElement('div');
@@ -95,22 +96,22 @@ btnEncript.addEventListener('click', () =>{
     aside.style.display = 'block';
 
     mostrarMessage(message)
-   
+    const btnCopy = document.querySelector('#btnCopy');
+    copyToClipBoard(message,btnCopy);
 });
 
-const copyToClipBoard = () => {
-
-    const content = input.in;
-
-    navigator.clipboard.writeText(content)
+const copyToClipBoard = (content, btn) => {
+    btn.addEventListener('click', () =>{
+        navigator.clipboard.writeText(content)
         .then(() => {
-        console.log("Text copied to clipboard...")
+        alert("Text copied to clipboard...")
     })
         .catch(err => {
         console.log('Something went wrong', err);
     })
-}
+    })
 
+}
 
 
 btnDecrypt.addEventListener('click', () => {
@@ -124,4 +125,8 @@ btnDecrypt.addEventListener('click', () => {
     aside.style.display = 'block';
     asideImage.style.display = 'none';
     mostrarMessage(message);
+    const btnCopy = document.querySelector('#btnCopy');
+    copyToClipBoard(message,btnCopy);
+
 })
+
