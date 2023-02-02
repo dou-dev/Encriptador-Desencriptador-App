@@ -91,7 +91,6 @@ btnEncript.addEventListener('click', () =>{
         mostrarAlerta();
         return;
     } 
-    // textAside.style.display = 'block';
     asideImage.style.display = 'none';
     aside.style.display = 'block';
 
@@ -121,7 +120,6 @@ btnDecrypt.addEventListener('click', () => {
         mostrarAlerta();
         return;
     } 
-    // textAside.style.display = 'block';
     aside.style.display = 'block';
     asideImage.style.display = 'none';
     mostrarMessage(message);
