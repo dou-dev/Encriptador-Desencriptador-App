@@ -74,6 +74,10 @@ const mostrarAlerta = () =>{
 //crear mensaje html
 
 const mostrarMessage= (message)=>{
+    const textAside = document.querySelector('.text-aside');
+    if(textAside){
+        textAside.remove();
+    }
     const html = `
         <div class="text-aside">
                 <p class="message">${message}</p>
@@ -83,6 +87,7 @@ const mostrarMessage= (message)=>{
     const div = document.createElement('div');
     div.innerHTML = html;
     aside.append(div.firstElementChild);
+    input.value ='';
 }
 
 btnEncript.addEventListener('click', () =>{
@@ -97,6 +102,7 @@ btnEncript.addEventListener('click', () =>{
     mostrarMessage(message)
     const btnCopy = document.querySelector('#btnCopy');
     copyToClipBoard(message,btnCopy);
+
 });
 
 const copyToClipBoard = (content, btn) => {
